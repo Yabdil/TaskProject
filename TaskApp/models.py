@@ -50,7 +50,7 @@ class CustomModel(AbstractBaseUser):
         return self.is_admin
 
 
-class ItemObject(models.Model):
+class Task(models.Model):
     description = models.TextField(max_length=200)
     is_completed = models.BooleanField(default=False)
     created_by = models.ForeignKey('CustomModel', on_delete=models.CASCADE)
