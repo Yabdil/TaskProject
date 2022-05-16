@@ -8,7 +8,13 @@
         </head>
         <body>
             <div id="mainBody">
-
+                <form v-on:submit.prevent="onSubmit">
+                    <label for="email">Email</label>
+                    <input v-model="email"  id="email" placeholder="Saissisez votre Email" >
+                    <label for="password">password</label>
+                    <input v-model="password" id="password" placeholder="Saissisez votre Password">
+                    <button type="submit"> Envoyer </button>
+                </form>
             </div>
         <script type="text/javascript" src="{% static 'vue/login.js'  %}"></script>
         </body>
