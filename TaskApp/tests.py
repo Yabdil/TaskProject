@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from django.test import TestCase
+
 from .models import CustomUser, Task
 
 load_dotenv()
