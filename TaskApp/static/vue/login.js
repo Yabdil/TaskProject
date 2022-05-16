@@ -3,10 +3,16 @@ var app = new Vue({
     delimiters: ["[[", "]]"],
     data: function () {
         return {
-            message: 'Haha',
+            errorMessage: 'Le mot de passe ou email est invalide',
+            email: '',
+            password: '',
+            isError: false
         }
     },
     methods: {
+    onSubmit(){
+        console.log("clicked")
+    }
 
     }
 })
