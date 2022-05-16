@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
 )
 
 
-class CustomManager(BaseUserManager):
+class CustomManagerForUser(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
             raise ValueError("Le champ email est réquis")
@@ -23,15 +23,14 @@ class CustomManager(BaseUserManager):
         return user
 
 
-# Create your models here.
-class CustomModel(AbstractBaseUser):
+class CustomUser(AbstractBaseUser):
     email = models.EmailField(max_length=200, unique=True)
     first_name = models.TextField(max_length=200)
     last_name = models.TextField(max_length=200)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
-    objects = CustomManager()
+    objects = CustomManagerForUser()
 
     USERNAME_FIELD = 'email'
 
@@ -46,19 +45,18 @@ class CustomModel(AbstractBaseUser):
 
     @property
     def is_staff(self):
-        # Does the user had the admin status ?
         return self.is_admin
 
 
 class Task(models.Model):
     description = models.TextField(max_length=200)
     is_completed = models.BooleanField(default=False)
-    created_by = models.ForeignKey('CustomModel', on_delete=models.CASCADE)
+    created_by = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
 
     def __str__(self):
         """
         Returning the first 5 letters of the description and 3 dot
         ex: Trips ...
         """
-        return f'{self.description[:5]} ...'
+        return f'{self.description[:7]} ...'
 
