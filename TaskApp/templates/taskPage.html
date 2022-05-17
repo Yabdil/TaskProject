@@ -13,7 +13,7 @@
                         <p >Task App</p>
                     </div>
                     <div class="log-person-container">
-                        <a class="logged-item">[[ name ]]</a>
+                        <a class="logged-item">Abdillahi</a>
                     </div>
                 </div>
                 <div class="create-element-container">
@@ -25,10 +25,23 @@
                 </div>
                 <div class="list-elements">
                     <div class="list-element-container">
-                            <div v-for="task in tasks" :key="task.description">
+                             <button class="actions filtering "
+                                     v-bind:class="{isCompletedButton: isCompletedActivated}" v-on:click="filterCompletedTasks">
+                                    Completed
+                             </button>
+                            <button class="actions clearing" v-on:click="clearAllTasks">Clear</button>
+                            <button class="actions filtering"
+                                    v-bind:class="{myTasks: myOwnTasks}" v-on:click="filterOwnTasks">
+                                    My Tasks
+                            </button>
+                            <div v-for="task in tasks" :key="task.pk">
                                 <div class="element-container">
-                                    <p class="element-name-container" v-on:click="completeTask(task)" >[[ task.description ]]</p>
-                                    <button class="delete" v-on:click="completeTask(task)">X</button>
+                                    <p v-bind:class="{is_completed: task.fields.is_completed}"
+                                       class="element-name-container"
+                                       v-on:click="completeTask(task.pk)" >
+                                        [[ task.fields.description ]]
+                                    </p>
+                                    <button class="delete" v-on:click="deleteTask(task.pk)">X</button>
                                 </div>
                             </div>
                     </div>
