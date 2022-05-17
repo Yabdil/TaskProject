@@ -16,8 +16,8 @@ class CustomManagerForUser(BaseUserManager):
     def create_superuser(self, email, password=None):
         if not email:
             raise ValueError("Le champ email est réquis")
-        user = self.model(email=self.normalize_email(email),
-                          password=password)
+        user = self.model(email=self.normalize_email(email))
+        user.set_password(password)
         user.is_admin = True
         user.save()
         return user

@@ -1,7 +1,8 @@
+import json
 import os
 
 from dotenv import load_dotenv
-from django.test import TestCase
+from django.test import TestCase, Client
 
 from .models import CustomUser, Task
 
@@ -13,7 +14,7 @@ FIRSTNAME = os.getenv("FIRSTNAME")
 LASTNAME = os.getenv("LASTNAME")
 
 
-class TestUser(TestCase):
+class UserModelTest(TestCase):
     def setUp(self):
         CustomUser.objects.create(email=EMAIL,
                                   password=PASSWORD,
@@ -30,7 +31,7 @@ class TestUser(TestCase):
         self.assertFalse(user_test.is_admin)
 
 
-class TestTask(TestCase):
+class TaskModelTest(TestCase):
     def setUp(self):
         # Adding a fake user
         self.user = CustomUser.objects.create(email=EMAIL,
@@ -48,3 +49,13 @@ class TestTask(TestCase):
     def test_task_is_not_completed(self):
         # By default, every new added task is not completed
         self.assertFalse(self.task.is_completed)
+
+
+class TestAuthUser(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_user_authenticated(self):
+        data = {'email': '123', 'password': '123'}
+        c = self.client.post(path='/login_user', data=data)
+        print(c, c.content)

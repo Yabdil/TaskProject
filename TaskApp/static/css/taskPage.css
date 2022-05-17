@@ -70,7 +70,7 @@ input:focus{
     box-shadow: 0.5px 0.5px 2px 0.3px #5B93BC;
 }
 
-button{
+.submit-button{
     background:#3c9c41;
     color: whitesmoke;
     border: none;
@@ -78,7 +78,7 @@ button{
     padding: 0.35rem 1rem;
 }
 
-button:hover{
+.submit-button:hover{
     background: #29752d;
 }
 
@@ -144,4 +144,18 @@ legend{
 
 .element-container > .completed{
     text-decoration: line-through;
+}
+
+.actions{
+    cursor: pointer;
+}
+
+.clearing:hover{
+    background: red;
+    color: white;
+}
+
+.filtering:hover, .isCompletedButton, .myTasks{
+    background: green;
+    color: white;
 }
