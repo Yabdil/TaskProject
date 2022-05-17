@@ -1,0 +1,147 @@
+#mainPage{
+    margin-left: -7px;
+}
+
+.header-container{
+    background: #1288d6;
+    width: 100%;
+    margin-top: 0;
+    color: black;
+    height: 32px;
+    padding: 2px 0;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 8px 1px rgb(138, 138, 138, 60%);
+}
+
+.app-name-container{
+    width: 150px;
+    text-align: center;
+    margin: 0.1rem 0 0 0.1rem;
+}
+
+.app-name-container p, .log-person-container a {
+    margin-top: 0;
+}
+
+.log-person-container{
+   margin-right: 4px;
+   width: 150px;
+   text-align: right;
+   margin-top: 0.4rem;
+}
+
+.logged-item{
+    margin-right: 0.4rem;
+    font-weight: normal;
+}
+
+.create-element-container{
+    width: 95%;
+    padding: 0.7rem 0;
+    text-align: center;
+    margin-top: 1.2rem;
+    font-family: inherit;
+}
+
+fieldset{
+    width: 48%;
+    margin: 0 auto;
+}
+
+fieldset input, button{
+    border-radius: 4px;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+}
+
+input{
+    width: 72%;
+    border: 1.5px solid #C7CCD2;
+    margin-right: 0.2rem;
+    margin-left: 0;
+    font-size: 0.9rem;
+    max-width: 700px;
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0.5px 0.5px 2px 0.3px #5B93BC;
+}
+
+button{
+    background:#3c9c41;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem 1rem;
+}
+
+button:hover{
+    background: #29752d;
+}
+
+legend{
+    color: rgb(32, 71, 71);
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.list-elements{
+    height: 60%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin-top: .4rem;
+}
+
+.list-element-container{
+    width: 50%;
+    box-shadow: 0px 0px 15px 0px rgb(151, 150, 150, 55%);
+    overflow: auto;
+}
+.element-container{
+    list-style: none;
+    margin: 8px 2px;
+    display: flex;
+    justify-content: space-between;
+    background-color: dodgerblue;
+    background-image: linear-gradient(to top right, #196fc0,#3590E9,dodgerblue);
+    color: white;
+    min-height: 25px;
+    max-height: 40px;
+}
+
+.element-container:hover{
+    box-shadow: 0.5px 0.6px 3px 1px rgb(138, 138, 138, 70%);
+    transition: 0.5s;
+}
+
+.element-container > button{
+    border: none;
+    margin-right: 0px;
+    outline: none;
+    cursor: pointer;
+    color: black;
+    padding: 0 0.7rem;
+    opacity: 0.75;
+    background: none;
+}
+
+.element-container > p{
+    margin-top: 8px;
+    margin-left: 3px;
+    cursor: pointer;
+    line-height: normal;
+}
+
+.element-container > button:hover{
+    opacity: 1;
+    color: red;
+}
+
+.element-container > .completed{
+    text-decoration: line-through;
+}

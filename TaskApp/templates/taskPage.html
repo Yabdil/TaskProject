@@ -1,0 +1,39 @@
+{% load static %}
+    <html>
+        <head>
+        <link rel="stylesheet"  type="text/css" href="{% static 'css/taskPage.css'  %}">
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        </head>
+        <body>
+            <div id="mainPage">
+                <div class="header-container">
+                    <div class="app-name-container">
+                        <p >Task App</p>
+                    </div>
+                    <div class="log-person-container">
+                        <a class="logged-item">[[ name ]]</a>
+                    </div>
+                </div>
+                <div class="create-element-container">
+                    <fieldset>
+                        <legend>Nouvel Element</legend>
+                        <input type="text" placeholder="Saisir" v-model="newItemDescription">
+                        <button class="submit-button" v-on:click="addTask">Add</button>
+                    </fieldset>
+                </div>
+                <div class="list-elements">
+                    <div class="list-element-container">
+                            <div v-for="task in tasks" :key="task.description">
+                                <div class="element-container">
+                                    <p class="element-name-container" v-on:click="completeTask(task)" >[[ task.description ]]</p>
+                                    <button class="delete" v-on:click="completeTask(task)">X</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        <script type="text/javascript" src="{% static 'vue/taskPage.js'  %}"></script>
+        </body>
+    </html>

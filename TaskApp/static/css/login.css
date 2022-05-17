@@ -14,14 +14,6 @@ body{
     align-items: center;
 }
 
-#form-container{
-    border: 1px solid red;
-}
-
-#form-container > form{
-    display:
-}
-
 .login-container{
     width: 100vw;
     height: 100vh;
@@ -77,10 +69,7 @@ button{
 
 button:hover{
     opacity: 1;
-
 }
-
-
 
 .msg-error{
     font-size: 0.72rem;
