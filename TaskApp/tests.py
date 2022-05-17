@@ -8,6 +8,9 @@ from .models import CustomUser, Task
 
 load_dotenv()
 
+"""
+We load from the .env file, constants in order to create a user in our test database
+"""
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("password")
 FIRSTNAME = os.getenv("FIRSTNAME")
@@ -20,6 +23,7 @@ class UserModelTest(TestCase):
                                   password=PASSWORD,
                                   first_name=FIRSTNAME,
                                   last_name=LASTNAME)
+        self.client = Client(enforce_csrf_checks=False)
 
     def test_user_added(self):
         user_test = CustomUser.objects.get(email=EMAIL)
@@ -28,7 +32,13 @@ class UserModelTest(TestCase):
         self.assertEqual(user_test.email, "test1@gmail.com")
         self.assertEqual(user_test.first_name, "User")
         self.assertEqual(user_test.last_name, "Test")
-        self.assertFalse(user_test.is_admin)
+        self.assertFalse(user_test.is_admin)  # A user is not an admin
+
+    def test_user_authenticate(self):
+        user_test = CustomUser.objects.get(email=EMAIL)
+        data = {'email': EMAIL, 'password': PASSWORD}
+        c = self.client.post(path='/login_user', data=data, content_type="application/json")
+        self.assertEqual(c.status_code, 200)
 
 
 class TaskModelTest(TestCase):
@@ -51,11 +61,27 @@ class TaskModelTest(TestCase):
         self.assertFalse(self.task.is_completed)
 
 
-class TestAuthUser(TestCase):
+"""
+Testing the API 
+"""
+class TestTaskAPI(TestCase):
     def setUp(self):
-        self.client = Client()
+        self.client = Client(enforce_csrf_checks=False)
+        self.user = CustomUser.objects.create(email=EMAIL,
+                                              password=PASSWORD,
+                                              first_name=FIRSTNAME,
+                                              last_name=LASTNAME)
 
-    def test_user_authenticated(self):
-        data = {'email': '123', 'password': '123'}
-        c = self.client.post(path='/login_user', data=data)
-        print(c, c.content)
+        # adding a task
+        self.task1 = Task.objects.create(description="Premier test", created_by=self.user)
+        self.task2 = Task.objects.create(description="Premier test", created_by=self.user)
+        self.task3 = Task.objects.create(description="Premier test", created_by=self.user)
+
+    def test_get_tasks(self):
+        response = self.client.get('/getTasks')
+        self.assertEqual(response.status_code, 200)
+        response_json = json.loads(response.content)
+
+
+
+

@@ -19,13 +19,14 @@ def main_page(request):
 
 @csrf_exempt
 def login_user(request):
-    """email = result['email']
+    result = json.loads(request.body)
+    email = result['email']
     password = result['password']
     user = authenticate(email=email, password=password)
     if user is None:
-        return JsonResponse({"is_error": True}, status=200)"""
+        return JsonResponse({"is_error": True}, status=200)
 
-    return JsonResponse(data={"haha": "855"}, status=201)
+    return JsonResponse(status=200)
 
 
 @csrf_exempt
@@ -48,6 +49,7 @@ def delete_task(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.delete()
     return JsonResponse({"message": "deleted"}, status=200)
+
 
 @csrf_exempt
 def complete_task(request, pk):
