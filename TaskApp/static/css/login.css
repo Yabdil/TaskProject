@@ -1,0 +1,80 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0px;
+}
+#mainBody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    padding: 1rem 2rem;
+    box-shadow: 0.5px 0.5px 4px 0 darkgray;
+    border: 0.2px solid rgb(189, 188, 188);
+    border-radius: 0.5rem;
+    width: 15%;
+    max-width: 220px;
+}
+
+.actions-container{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    padding: 0.3rem 0.35rem;
+    margin: 0.3rem 0;
+    border: 1px solid rgb(206, 199, 199);
+    border-radius: 0.2rem;
+}
+input:nth-child(2){
+    margin-bottom: 0.6rem;
+}
+
+.isError{
+    border: 1px solid red;
+    outline: red;
+}
+
+label:nth-child(3){
+    margin-top: 0.35rem;
+}
+
+button{
+    padding: 0.25rem 0;
+    background-color: dodgerblue;
+    opacity: 0.7;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin: 0.7rem 0;
+    width: 100%;
+    border-radius: 0.2rem;
+}
+
+button:hover{
+    opacity: 1;
+}
+
+.msg-error{
+    font-size: 0.72rem;
+    color: red;
+    border: 1px solid red;
+    padding: .1rem .55rem;
+    visibility: visible;
+}
